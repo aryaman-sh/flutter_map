@@ -16,248 +16,288 @@ class PolygonPage extends StatefulWidget {
   State<PolygonPage> createState() => _PolygonPageState();
 }
 
+/
 class _PolygonPageState extends State<PolygonPage> {
+
   final LayerHitNotifier<HitValue> _hitNotifier = ValueNotifier(null);
   List<HitValue>? _prevHitValues;
   List<Polygon<HitValue>>? _hoverGons;
 
-  final _polygonsRaw = <Polygon<HitValue>>[
+  final _polygonsRaw = <Polygon<HitValue>>[ // adding randos from wikimapia api
     Polygon(
       points: const [
-        LatLng(51.5, -0.09),
-        LatLng(53.3498, -6.2603),
-        LatLng(48.8566, 2.3522),
+        LatLng(28.5562593, 77.1914649),
+        LatLng(28.556231, 77.1912718),
+        LatLng(28.5561273, 77.1910518),
+        LatLng(28.5559671, 77.1908802),
+        LatLng(28.5555666, 77.1909606),
+        LatLng(28.55543, 77.1909553),
+        LatLng(28.5552839, 77.1908695),
+        LatLng(28.5549447, 77.1905637),
+        LatLng(28.5547373, 77.190274),
+        LatLng(28.5546667, 77.1901453),
+        LatLng(28.55453, 77.1900648),
+        LatLng(28.5544263, 77.1901506),
+        LatLng(28.5543274, 77.1903867),
+        LatLng(28.5542614, 77.1906656),
+        LatLng(28.5542379, 77.1909553),
+        LatLng(28.5542473, 77.1913254),
+        LatLng(28.5542473, 77.1916527),
+        LatLng(28.554219, 77.1918029),
+        LatLng(28.5541955, 77.1919692),
+        LatLng(28.5540871, 77.1922535),
+        LatLng(28.5539646, 77.192409),
+        LatLng(28.5538091, 77.1926075),
+        LatLng(28.5536819, 77.1927255),
+        LatLng(28.5536018, 77.1929133),
+        LatLng(28.5535405, 77.193101),
+        LatLng(28.5535028, 77.1933317),
+        LatLng(28.5536347, 77.1934336),
+        LatLng(28.5538374, 77.193498),
+        LatLng(28.5541201, 77.1935678),
+        LatLng(28.554318, 77.1936107),
+        LatLng(28.5545583, 77.1937233),
+        LatLng(28.5548033, 77.1938306),
+        LatLng(28.5549965, 77.1939325),
+        LatLng(28.5550954, 77.193954),
+        LatLng(28.5552038, 77.1938843),
+        LatLng(28.555298, 77.1937394),
+        LatLng(28.5553216, 77.1935838),
+        LatLng(28.5553499, 77.1932673),
+        LatLng(28.5554583, 77.1928865),
+        LatLng(28.5559294, 77.1921784),
+        LatLng(28.5561179, 77.1918941),
+        LatLng(28.556198, 77.1917492),
       ],
       borderColor: Colors.red,
-      borderStrokeWidth: 4,
+      borderStrokeWidth: 1,
+      color: Colors.yellow.withOpacity(0.05),
       hitValue: (
-        title: 'Basic Unfilled Polygon',
-        subtitle: 'Nothing really special here...',
+      title: 'level 3',
+      subtitle: 'Depth: 3',
       ),
     ),
     Polygon(
       points: const [
-        LatLng(55.5, -0.09),
-        LatLng(54.3498, -6.2603),
-        LatLng(52.8566, 2.3522),
+        LatLng(28.550751, 77.184105),
+        LatLng(28.551769, 77.185006),
+        LatLng(28.557875, 77.187195),
+        LatLng(28.557574, 77.187924),
+        LatLng(28.560288, 77.189126),
+        LatLng(28.558931, 77.19419),
+        LatLng(28.558686, 77.19728),
+        LatLng(28.557951, 77.200885),
+        LatLng(28.557461, 77.200756),
+        LatLng(28.557197, 77.201443),
+        LatLng(28.555953, 77.201228),
+        LatLng(28.555915, 77.200842),
+        LatLng(28.55388, 77.200027),
+        LatLng(28.553239, 77.199469),
+        LatLng(28.553427, 77.198696),
+        LatLng(28.546114, 77.195864),
+        LatLng(28.547509, 77.191701),
       ],
-      color: Colors.purple,
-      borderColor: Colors.yellow,
-      borderStrokeWidth: 4,
+      borderColor: Colors.red,
+      borderStrokeWidth: 1,
+      color: Colors.yellow.withOpacity(0.05),
       hitValue: (
-        title: 'Basic Filled Polygon',
-        subtitle: 'Nothing really special here...',
+      title: 'level 1',
+      subtitle: 'Parent',
       ),
     ),
     Polygon(
       points: const [
-        LatLng(46.35, 4.94),
-        LatLng(46.22, -0.11),
-        LatLng(44.399, 1.76),
+        LatLng(28.5596988, 77.1912181),
+        LatLng(28.5593972, 77.1911001),
+        LatLng(28.5595009, 77.1907889),
+        LatLng(28.5583795, 77.1903276),
+        LatLng(28.5586151, 77.1892869),
+        LatLng(28.5574937, 77.1887719),
+        LatLng(28.5575879, 77.1884608),
+        LatLng(28.5549587, 77.1873021),
+        LatLng(28.5535452, 77.1920442),
+        LatLng(28.5538279, 77.1921515),
+        LatLng(28.553385, 77.1933746),
+        LatLng(28.5553828, 77.1941041),
+        LatLng(28.5552603, 77.1944904),
+        LatLng(28.5561461, 77.1948122),
+        LatLng(28.5567304, 77.1925914),
+        LatLng(28.5575597, 77.1928918),
+        LatLng(28.5578518, 77.1920227),
+        LatLng(28.5591051, 77.1924519),
+        LatLng(28.5594067, 77.1914219),
+        LatLng(28.5596045, 77.191497),
       ],
-      pattern: StrokePattern.dashed(segments: const [50, 20]),
-      borderStrokeWidth: 4,
-      borderColor: Colors.lightBlue,
-      color: Colors.yellow,
+      borderColor: Colors.red,
+      borderStrokeWidth: 1,
+      color: Colors.yellow.withOpacity(0.05),
       hitValue: (
-        title: 'Polygon With Dashed Borders',
-        subtitle: '...',
+      title: 'Level 2',
+      subtitle: 'Depth 2',
       ),
     ),
     Polygon(
       points: const [
-        LatLng(60.16, -9.38),
-        LatLng(60.16, -4.16),
-        LatLng(61.18, -4.16),
-        LatLng(61.18, -9.38),
+        LatLng(28.5532907, 77.1935544),
+        LatLng(28.5540146, 77.1938511),
+        LatLng(28.5540405, 77.1937813),
+        LatLng(28.5542737, 77.1938698),
+        LatLng(28.554064, 77.1943553),
+        LatLng(28.5535457, 77.1941032),
+        LatLng(28.5534515, 77.1943097),
+        LatLng(28.552584, 77.1939486),
+        LatLng(28.5530693, 77.192393),
+        LatLng(28.5535523, 77.1926182),
       ],
-      borderStrokeWidth: 4,
-      borderColor: Colors.purple,
-      label: 'Label!',
+      borderColor: Colors.red,
+      borderStrokeWidth: 1,
+      color: Colors.yellow.withOpacity(0.05),
       hitValue: (
-        title: 'Polygon With Label',
-        subtitle: 'This is a very descriptive label!',
+      title: 'New Polygon',
+      subtitle: 'Newly Added',
       ),
     ),
     Polygon(
       points: const [
-        LatLng(59.77, -10.28),
-        LatLng(58.21, -10.28),
-        LatLng(58.21, -7.01),
-        LatLng(59.77, -7.01),
-        LatLng(60.77, -6.01),
+        LatLng(28.5529562, 77.1941096),
+        LatLng(28.5529562, 77.1935624),
+        LatLng(28.5534981, 77.1935624),
+        LatLng(28.5534981, 77.1941096),
       ],
-      borderStrokeWidth: 4,
-      borderColor: Colors.purple,
-      label: 'Rotated!',
-      rotateLabel: true,
-      labelPlacement: PolygonLabelPlacement.polylabel,
+      borderColor: Colors.red,
+      borderStrokeWidth: 1,
+      color: Colors.yellow.withOpacity(0.05),
       hitValue: (
-        title: 'Polygon With Rotated Label',
-        subtitle: "Now you don't have to turn your head so much",
+      title: 'Hauz Khas Fort',
+      subtitle: 'Hauz Khas Fort',
       ),
     ),
     Polygon(
       points: const [
-        LatLng(50, -18),
-        LatLng(50, -14),
-        LatLng(51.5, -12.5),
-        LatLng(54, -14),
-        LatLng(54, -18),
-      ].map((latlng) => LatLng(latlng.latitude, latlng.longitude + 8)).toList(),
-      pattern: const StrokePattern.dotted(),
-      holePointsList: [
-        const [
-          LatLng(52, -17),
-          LatLng(52, -16),
-          LatLng(51.5, -15.5),
-          LatLng(51, -16),
-          LatLng(51, -17),
-        ],
-        const [
-          LatLng(53.5, -17),
-          LatLng(53.5, -16),
-          LatLng(53, -15),
-          LatLng(52.25, -15),
-          LatLng(52.25, -16),
-          LatLng(52.75, -17),
-        ],
-      ]
-          .map(
-            (latlngs) => latlngs
-                .map((latlng) => LatLng(latlng.latitude, latlng.longitude + 8))
-                .toList(),
-          )
-          .toList(),
-      borderStrokeWidth: 4,
-      borderColor: Colors.orange,
-      color: Colors.orange.withOpacity(0.5),
-      label: 'This one is not\nperformantly rendered',
-      rotateLabel: true,
-      labelPlacement: PolygonLabelPlacement.centroid,
-      labelStyle: const TextStyle(color: Colors.black),
-      hitValue: (
-        title: 'Polygon With Hole',
-        subtitle: 'A bit like Swiss cheese maybe?',
-      ),
-    ),
-    Polygon(
-      points: const [
-        LatLng(50, -18),
-        LatLng(53, -16),
-        LatLng(51.5, -12.5),
-        LatLng(54, -14),
-        LatLng(54, -18),
-      ]
-          .map((latlng) => LatLng(latlng.latitude - 6, latlng.longitude + 8))
-          .toList(),
-      pattern: const StrokePattern.dotted(),
-      holePointsList: [
-        const [
-          LatLng(52, -17),
-          LatLng(52, -16),
-          LatLng(51.5, -15.5),
-          LatLng(51, -16),
-          LatLng(51, -17),
-        ],
-        const [
-          LatLng(53.5, -17),
-          LatLng(53.5, -16),
-          LatLng(53, -15),
-          LatLng(52.25, -15),
-          LatLng(52.25, -16),
-          LatLng(52.75, -17),
-        ],
-      ]
-          .map(
-            (latlngs) => latlngs
-                .map((latlng) =>
-                    LatLng(latlng.latitude - 6, latlng.longitude + 8))
-                .toList()
-                .reversed // Test that holes are always cut, no matter winding
-                .toList(),
-          )
-          .toList(),
-      borderStrokeWidth: 4,
-      borderColor: Colors.orange,
-      color: Colors.orange.withOpacity(0.5),
-      label: 'This one is not\nperformantly rendered',
-      rotateLabel: true,
-      labelPlacement: PolygonLabelPlacement.centroid,
-      labelStyle: const TextStyle(color: Colors.black),
-      hitValue: (
-        title: 'Polygon With Hole & Self Intersection',
-        subtitle: 'This one still works with performant rendering',
-      ),
-    ),
-    Polygon(
-      points: const [
-        LatLng(61.861042, 0.946502),
-        LatLng(61.861458, 0.949468),
-        LatLng(61.861427, 0.949626),
-        LatLng(61.859015, 0.951513),
-        LatLng(61.858129, 0.952652)
+        LatLng(28.5478906, 77.1924948),
+        LatLng(28.5477021, 77.1931599),
+        LatLng(28.5473346, 77.1929239),
+        LatLng(28.5476173, 77.1924197),
       ],
-      holePointsList: [],
-      color: Colors.lightGreen.withOpacity(0.5),
-      borderColor: Colors.lightGreen.withOpacity(0.5),
-      borderStrokeWidth: 10,
+      borderColor: Colors.red,
+      borderStrokeWidth: 1,
+      color: Colors.yellow.withOpacity(0.05),
       hitValue: (
-        title: 'Testing opacity treatment (small)',
-        subtitle:
-            "Holes shouldn't be cut, and colors should be mixed correctly",
+      title: 'Rose Garden',
+      subtitle: 'Rose Garden',
       ),
     ),
     Polygon(
       points: const [
-        LatLng(61.861042, 0.946502),
-        LatLng(61.861458, 0.949468),
-        LatLng(61.861427, 0.949626),
-        LatLng(61.859015, 0.951513),
-        LatLng(61.858129, 0.952652),
-        LatLng(61.857633, 0.953214),
-        LatLng(61.855842, 0.954683),
-        LatLng(61.855769, 0.954692),
-        LatLng(61.855679, 0.954565),
-        LatLng(61.855417, 0.953926),
-        LatLng(61.855268, 0.953431),
-        LatLng(61.855173, 0.952443),
-        LatLng(61.855161, 0.951147),
-        LatLng(61.855222, 0.950822),
-        LatLng(61.855928, 0.948422),
-        LatLng(61.856365, 0.946638),
-        LatLng(61.856456, 0.946586),
-        LatLng(61.856787, 0.946656),
-        LatLng(61.857578, 0.946675),
-        LatLng(61.859338, 0.946453),
-        LatLng(61.861042, 0.946502)
+        LatLng(28.5564242, 77.1918942),
+        LatLng(28.5564242, 77.1914811),
+        LatLng(28.556787, 77.1914811),
+        LatLng(28.556787, 77.1918942),
       ],
-      holePointsList: const [
-        [
-          LatLng(61.858881, 0.947234),
-          LatLng(61.858728, 0.947126),
-          LatLng(61.858562, 0.947132),
-          LatLng(61.858458, 0.947192),
-          LatLng(61.85844, 0.947716),
-          LatLng(61.858488, 0.947819),
-          LatLng(61.858766, 0.947818),
-          LatLng(61.858893, 0.947779),
-          LatLng(61.858975, 0.947542),
-          LatLng(61.858881, 0.947234)
-        ]
-      ],
-      color: Colors.lightGreen.withOpacity(0.5),
-      borderColor: Colors.lightGreen.withOpacity(0.5),
-      borderStrokeWidth: 10,
+      borderColor: Colors.red,
+      borderStrokeWidth: 1,
+      color: Colors.yellow.withOpacity(0.05),
       hitValue: (
-        title: 'Testing opacity treatment (large)',
-        subtitle:
-            "Holes shouldn't be cut, and colors should be mixed correctly",
+      title: 'tila',
+      subtitle: 'tila',
+      ),
+    ),
+    Polygon(
+      points: const [
+        LatLng(28.556695, 77.1916231),
+        LatLng(28.556516, 77.191548),
+        LatLng(28.5564689, 77.1917196),
+        LatLng(28.5566432, 77.1918054),
+      ],
+      borderColor: Colors.red,
+      borderStrokeWidth: 1,
+      color: Colors.yellow.withOpacity(0.05),
+      hitValue: (
+      title: 'monument protected in delhi list of monument',
+      subtitle: 'monument protected in delhi list of monument',
+      ),
+    ),
+    Polygon(
+      points: const [
+        LatLng(28.5552602, 77.1942006),
+        LatLng(28.5543272, 77.1938679),
+        LatLng(28.5540635, 77.1944045),
+        LatLng(28.5535451, 77.1941577),
+        LatLng(28.5534509, 77.1943507),
+        LatLng(28.5525556, 77.1939431),
+        LatLng(28.5530456, 77.192366),
+        LatLng(28.552876, 77.1922051),
+        LatLng(28.5524848, 77.1929883),
+        LatLng(28.5517688, 77.1927522),
+        LatLng(28.5514672, 77.1935462),
+        LatLng(28.5523531, 77.1938466),
+        LatLng(28.5525556, 77.1951769),
+        LatLng(28.5527547, 77.1952038),
+        LatLng(28.5529266, 77.1948873),
+        LatLng(28.5531694, 77.1951555),
+        LatLng(28.5531929, 77.1957429),
+        LatLng(28.5540446, 77.1956813),
+        LatLng(28.5540352, 77.1958208),
+        LatLng(28.5542425, 77.1959817),
+        LatLng(28.554491, 77.1959065),
+        LatLng(28.5546466, 77.1957161),
+        LatLng(28.5550988, 77.1955739),
+      ],
+      borderColor: Colors.red,
+      borderStrokeWidth: 1,
+      color: Colors.yellow.withOpacity(0.05),
+      hitValue: (
+      title: 'Hauz Khas Village',
+      subtitle: 'Hauz Khas Village',
+      ),
+    ),
+    Polygon(
+      points: const [
+        LatLng(28.5535439, 77.1940773),
+        LatLng(28.5535015, 77.1941685),
+        LatLng(28.5533555, 77.1941148),
+        LatLng(28.5534002, 77.1940183),
+      ],
+      borderColor: Colors.red,
+      borderStrokeWidth: 1,
+      color: Colors.yellow.withOpacity(0.05),
+      hitValue: (
+      title: 'entry gate for Hauz Khaz fort',
+      subtitle: 'entry gate for Hauz Khaz fort',
+      ),
+    ),
+    Polygon(
+      points: const [
+        LatLng(28.5523742, 77.1941292),
+        LatLng(28.5523695, 77.1941425),
+        LatLng(28.5523908, 77.1941399),
+      ],
+      borderColor: Colors.red,
+      borderStrokeWidth: 1,
+      color: Colors.yellow.withOpacity(0.05),
+      hitValue: (
+      title: 'cotton curio,hauz khas village',
+      subtitle: 'cotton curio,hauz khas village',
+      ),
+    ),
+    Polygon(
+      points: const [
+        LatLng(28.5530446, 77.1942182),
+        LatLng(28.5529291, 77.1941619),
+        LatLng(28.5528961, 77.1942396),
+        LatLng(28.5530163, 77.1942933),
+      ],
+      borderColor: Colors.red,
+      borderStrokeWidth: 1,
+      color: Colors.yellow.withOpacity(0.05),
+      hitValue: (
+      title: 'Palace of Flt. Lt. Hari Singh',
+      subtitle: 'Palace of Flt. Lt. Hari Singh',
       ),
     ),
   ];
   late final _polygons =
-      Map.fromEntries(_polygonsRaw.map((e) => MapEntry(e.hitValue, e)));
+  Map.fromEntries(_polygonsRaw.map((e) => MapEntry(e.hitValue, e)));
 
   @override
   Widget build(BuildContext context) {
@@ -268,8 +308,8 @@ class _PolygonPageState extends State<PolygonPage> {
         children: [
           FlutterMap(
             options: const MapOptions(
-              initialCenter: LatLng(51.5, -0.09),
-              initialZoom: 5,
+              initialCenter: LatLng(28.55676, 77.195971)
+              initialZoom: 16,
             ),
             children: [
               openStreetMapTileLayer,
@@ -283,18 +323,21 @@ class _PolygonPageState extends State<PolygonPage> {
                   if (listEquals(hitValues, _prevHitValues)) return;
                   _prevHitValues = hitValues;
 
-                  final hoverLines = hitValues.map((v) {
-                    final original = _polygons[v]!;
+                  // Find the polygon with the smallest area to select
+                  final smallestPolygon = hitValues
+                      .map((v) => _polygons[v]!)
+                      .reduce((a, b) => _calculateArea(a.points) < _calculateArea(b.points) ? a : b);
 
-                    return Polygon<HitValue>(
-                      points: original.points,
-                      holePointsList: original.holePointsList,
-                      color: Colors.transparent,
-                      borderStrokeWidth: 15,
-                      borderColor: Colors.green,
-                      disableHolesBorder: original.disableHolesBorder,
-                    );
-                  }).toList();
+                  final hoverLines = [
+                    Polygon<HitValue>(
+                      points: smallestPolygon.points,
+                      holePointsList: smallestPolygon.holePointsList,
+                      color: Colors.red.withOpacity(0.2),
+                      borderStrokeWidth: 1,
+                      borderColor: Colors.red,
+                      disableHolesBorder: smallestPolygon.disableHolesBorder,
+                    )
+                  ];
                   setState(() => _hoverGons = hoverLines);
                 },
                 onExit: (_) {
@@ -324,109 +367,6 @@ class _PolygonPageState extends State<PolygonPage> {
                   ),
                 ),
               ),
-              PolygonLayer(
-                simplificationTolerance: 0,
-                useAltRendering: true,
-                polygons: [
-                  Polygon(
-                    points: const [
-                      LatLng(40, 150),
-                      LatLng(45, 160),
-                      LatLng(50, 170),
-                      LatLng(55, 180),
-                      LatLng(50, -170),
-                      LatLng(45, -160),
-                      LatLng(40, -150),
-                      LatLng(35, -160),
-                      LatLng(30, -170),
-                      LatLng(25, -180),
-                      LatLng(30, 170),
-                      LatLng(35, 160),
-                    ],
-                    holePointsList: const [
-                      [
-                        LatLng(45, 175),
-                        LatLng(45, -175),
-                        LatLng(35, -175),
-                        LatLng(35, 175),
-                      ],
-                    ],
-                    color: const Color(0xFFFF0000),
-                    hitValue: (
-                      title: 'Red Line',
-                      subtitle: 'Across the universe...',
-                    ),
-                  ),
-                  Polygon(
-                    points: const [
-                      LatLng(50, -18),
-                      LatLng(50, -14),
-                      LatLng(51.5, -12.5),
-                      LatLng(54, -14),
-                      LatLng(54, -18),
-                    ],
-                    holePointsList: [
-                      const [
-                        LatLng(52, -17),
-                        LatLng(52, -16),
-                        LatLng(51.5, -15.5),
-                        LatLng(51, -16),
-                        LatLng(51, -17),
-                      ],
-                      const [
-                        LatLng(53.5, -17),
-                        LatLng(53.5, -16),
-                        LatLng(53, -15),
-                        LatLng(52.25, -15),
-                        LatLng(52.25, -16),
-                        LatLng(52.75, -17),
-                      ],
-                    ],
-                    borderStrokeWidth: 4,
-                    borderColor: Colors.black,
-                    color: Colors.green,
-                  ),
-                  Polygon(
-                    points: const [
-                      LatLng(50, -18),
-                      LatLng(53, -16),
-                      LatLng(51.5, -12.5),
-                      LatLng(54, -14),
-                      LatLng(54, -18),
-                    ]
-                        .map((latlng) =>
-                            LatLng(latlng.latitude - 6, latlng.longitude))
-                        .toList(),
-                    holePointsList: [
-                      const [
-                        LatLng(52, -17),
-                        LatLng(52, -16),
-                        LatLng(51.5, -15.5),
-                        LatLng(51, -16),
-                        LatLng(51, -17),
-                      ],
-                      const [
-                        LatLng(53.5, -17),
-                        LatLng(53.5, -16),
-                        LatLng(53, -15),
-                        LatLng(52.25, -15),
-                        LatLng(52.25, -16),
-                        LatLng(52.75, -17),
-                      ],
-                    ]
-                        .map(
-                          (latlngs) => latlngs
-                              .map((latlng) =>
-                                  LatLng(latlng.latitude - 6, latlng.longitude))
-                              .toList(),
-                        )
-                        .toList(),
-                    borderStrokeWidth: 4,
-                    borderColor: Colors.black,
-                    color: Colors.green,
-                  ),
-                ],
-              ),
             ],
           ),
         ],
@@ -434,11 +374,28 @@ class _PolygonPageState extends State<PolygonPage> {
     );
   }
 
+  double _calculateArea(List<LatLng> points) {
+    double area = 0;
+    for (int i = 0; i < points.length; i++) {
+      final j = (i + 1) % points.length;
+      area += points[i].longitude * points[j].latitude;
+      area -= points[j].longitude * points[i].latitude;
+    }
+    return area.abs() / 2.0;
+  }
+
   void _openTouchedGonsModal(
-    String eventType,
-    List<HitValue> tappedLines,
-    LatLng coords,
-  ) {
+      String eventType,
+      List<HitValue> tappedLines,
+      LatLng coords,
+      ) {
+    if (tappedLines.isEmpty) return;
+
+    // Find the polygon with the smallest area
+    final smallestPolygon = tappedLines
+        .map((v) => _polygons[v]!)
+        .reduce((a, b) => _calculateArea(a.points) < _calculateArea(b.points) ? a : b);
+
     showModalBottomSheet<void>(
       context: context,
       builder: (context) => Padding(
@@ -447,30 +404,17 @@ class _PolygonPageState extends State<PolygonPage> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             const Text(
-              'Tapped Polygon(s)',
+              'Tapped Polygon',
               style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
             ),
             Text(
               '$eventType at point: (${coords.latitude.toStringAsFixed(6)}, ${coords.longitude.toStringAsFixed(6)})',
             ),
             const SizedBox(height: 8),
-            Expanded(
-              child: ListView.builder(
-                itemBuilder: (context, index) {
-                  final tappedLineData = tappedLines[index];
-                  return ListTile(
-                    leading: index == 0
-                        ? const Icon(Icons.vertical_align_top)
-                        : index == tappedLines.length - 1
-                            ? const Icon(Icons.vertical_align_bottom)
-                            : const SizedBox.shrink(),
-                    title: Text(tappedLineData.title),
-                    subtitle: Text(tappedLineData.subtitle),
-                    dense: true,
-                  );
-                },
-                itemCount: tappedLines.length,
-              ),
+            ListTile(
+              title: Text(smallestPolygon.hitValue?.title ?? 'No title'),
+              subtitle: Text(smallestPolygon.hitValue?.subtitle ?? 'No subtitle'),
+              dense: true,
             ),
             const SizedBox(height: 8),
             Align(
